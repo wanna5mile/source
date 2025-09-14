@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>Pokémon FireRed Emulator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <style>
         html, body {
             margin: 0;
@@ -19,18 +18,20 @@
     </style>
 </head>
 <body>
+    <!-- Game container -->
     <div id="game"></div>
 
     <script>
         // EmulatorJS setup
         window.EJS_player = "#game";
-        window.EJS_core = "gba";
-        window.EJS_pathtodata = "../library/emulatorjs/data/";
-        window.EJS_gameUrl = "firered.gba"; // renamed ROM
+        window.EJS_core = "gba";                      // force GBA
+        window.EJS_pathtodata = "data/";              // adjust if needed
+        window.EJS_gameUrl = "firered.gba";           // ROM must be in same folder
         window.EJS_gameName = "Pokémon FireRed";
-        window.EJS_startOnLoaded = true;
+        window.EJS_startOnLoaded = true;              // auto-run
     </script>
 
-    <script src="../library/emulatorjs/data/loader.js"></script>
+    <!-- EmulatorJS loader -->
+    <script src="data/loader.js"></script>
 </body>
 </html>
