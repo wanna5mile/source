@@ -1,24 +1,35 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <script src="js/all.js"></script>
+    <meta charset="utf-8">
+    <title>Pokémon FireRed Emulator</title>
     <style>
-        body, html {
+        html, body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            background: #000;
+        }
+        #game {
+            width: 100%;
             height: 100%;
         }
     </style>
 </head>
 <body>
-    <div style="width:100%;height:100%;max-width:100%">
-        <div id="game"></div>
-    </div>
+    <div id="game"></div>
+
     <script>
+        // EmulatorJS setup
         EJS_player = "#game";
         EJS_core = "gba";
-        EJS_pathtodata = "emulatorjs/data/";
+        // 👇 Path to EmulatorJS data folder inside /library/
+        EJS_pathtodata = "../library/emulatorjs/data/"; 
+        // 👇 FireRed ROM in this same folder
         EJS_gameUrl = "firered.gba";
+        EJS_startOnLoaded = true;
     </script>
-    <script src="emulatorjs/data/loader.js"></script>
+
+    <script src="../library/emulatorjs/data/loader.js"></script>
 </body>
 </html>
