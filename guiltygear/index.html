@@ -1,25 +1,48 @@
-<html>
-    <head>
-        <script src="/js/all.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GBA Emulator - Guilty Gear</title>
 
-        <style>
-            body, html {
-                margin: 0;
-                padding: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div style="width:100%;height:100%;max-width:100%">
-            <div id="game"></div>
-        </div>
-        <script>
-            EJS_player = "#game";
-            EJS_core = "CORE_NAME";
-            EJS_pathtodata = "/emulatorjs/data/";
-            EJS_gameUrl = "guiltygear.gba";
-            EJS_core = 'gba';
-        </script>
-        <script src="/emulatorjs/data/loader.js"></script>
-    </body>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #game {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+
+  <!-- Make sure this points to your actual all.js -->
+  <script src="/js/all.js"></script>
+</head>
+<body>
+  <div id="game"></div>
+
+  <script>
+    // ✅ EmulatorJS configuration (must be declared BEFORE loader.js)
+    const EJS_player = "#game";                  // ID of container element
+    const EJS_gameUrl = "guiltygear.gba";        // Path or URL to your ROM
+    const EJS_core = "gba";                      // Core type (gba, nes, snes, n64, psx, etc.)
+    const EJS_pathtodata = "/emulatorjs/data/";  // Folder that contains loader.js and core files
+
+    // Optional settings
+    const EJS_startOnLoaded = true;              // Automatically start game when ready
+    const EJS_language = "en";
+  </script>
+
+  <!-- ✅ Must be after config -->
+  <script src="/emulatorjs/data/loader.js"></script>
+</body>
 </html>
