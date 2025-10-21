@@ -1,48 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GBA Emulator - Guilty Gear</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guilty Gear X</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/bguhm/bguhm.github.io/main/library/images/pkmn.png">
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      background: #000;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #FFD700;
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
 
-    #game {
-      width: 100%;
-      height: 100vh;
+    h2 {
+      margin: 20px 0;
+    }
+
+    /* Image container */
+    .image-preview {
+      width: 200px;
+      height: 200px;
+      border-radius: 10%;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 3px solid #FFD700;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      background: #111;
+    }
+
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: pixelated;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      background-color: #FFD700;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #ffea4d;
     }
   </style>
-
-  <!-- Make sure this points to your actual all.js -->
-  <script src="/js/all.js"></script>
 </head>
 <body>
-  <div id="game"></div>
+  <h2>Do you want to download <strong>guiltygear.gba</strong>?</h2>
+
+  <!-- Preview Image -->
+  <div class="image-preview">
+    <img src="https://raw.githubusercontent.com/wanna5mile/source/main/guiltygear/ggx.jpg" alt="Guilty Gear X Preview">
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-container">
+    <button onclick="downloadAndRedirect()">Yes, download and redirect to emulator</button>
+    <button onclick="skipToEmulator()">No, skip to emulator</button>
+  </div>
 
   <script>
-    // ✅ EmulatorJS configuration (must be declared BEFORE loader.js)
-    const EJS_player = "#game";                  // ID of container element
-    const EJS_gameUrl = "guiltygear.gba";        // Path or URL to your ROM
-    const EJS_core = "gba";                      // Core type (gba, nes, snes, n64, psx, etc.)
-    const EJS_pathtodata = "/emulatorjs/data/";  // Folder that contains loader.js and core files
+    function downloadAndRedirect() {
+      // Trigger download
+      const link = document.createElement("a");
+      link.href = "guiltygear.gba"; // replace with actual gba file path
+      link.download = "firered.gba";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
-    // Optional settings
-    const EJS_startOnLoaded = true;              // Automatically start game when ready
-    const EJS_language = "en";
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        window.location.href = "https://bguhm.github.io./library/emulatorjs/index.html";
+      }, 2000);
+    }
+
+    function skipToEmulator() {
+      window.location.href = "https://bguhm.github.io./library/emulatorjs/index.html";
+    }
   </script>
-
-  <!-- ✅ Must be after config -->
-  <script src="/emulatorjs/data/loader.js"></script>
 </body>
 </html>
